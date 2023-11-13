@@ -3,13 +3,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Board {
-    private char player1Symbol;
-    private char player2Symbol;
+    private String player1Symbol;
+    private String player2Symbol;
     private int rows;
     private int cols;
     private int boardState[];
 
-    public Board(char player1Symbol, char player2Symbol, int rows, int cols) {
+    public Board(String player1Symbol, String player2Symbol, int rows, int cols) {
         this.player1Symbol = player1Symbol;
         this.player2Symbol = player2Symbol;
         this.rows = rows;
@@ -20,8 +20,8 @@ public class Board {
     }
 
     public Board() {
-        this.player1Symbol = 'x';
-        this.player2Symbol = 'o';
+        this.player1Symbol = "x";
+        this.player2Symbol = "o";
         this.rows = 3;
         this.cols = 3;
 
@@ -58,5 +58,13 @@ public class Board {
             }
         }
         System.out.println();
+    }
+
+    public int[] getBoardState() {
+        return boardState;
+    }
+
+    public void setBoardState(int[] boardState) {
+        this.boardState = boardState;
     }
 }
