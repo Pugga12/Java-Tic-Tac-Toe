@@ -15,7 +15,7 @@ public class Board {
         this.rows = rows;
         this.cols = cols;
 
-        this.boardState = new int[(rows * cols) - 1];
+        this.boardState = new int[(rows * cols)];
         Arrays.fill(boardState, 0);
     }
 
@@ -25,11 +25,38 @@ public class Board {
         this.rows = 3;
         this.cols = 3;
 
-        this.boardState = new int[8];
+        this.boardState = new int[9];
         Arrays.fill(boardState, 0);
     }
 
-    public void drawBoard() {
-        
+    public void drawBoardFull() {
+        drawDiv(cols);
+        for (int i = 0; i < rows; i++) {
+            drawGameLine(i);
+            drawDiv(cols);
+        }
+    }
+
+    public void drawDiv(int cols) {
+        System.out.print('|');
+        for (int i = 0; i < cols; i++ ) {
+            System.out.print("---|");
+        }
+        System.out.println();
+    }
+
+    public void drawGameLine(int row) {
+        int startingPosition = cols * row;
+        System.out.print('|');
+        for (int i = 0; i < cols; i++) {
+            if (boardState[startingPosition + i] == 1) {
+                System.out.print(' ' + player1Symbol + " |");
+            } else if (boardState[startingPosition + i] == 2) {
+                System.out.print(' ' + player2Symbol + " |");
+            } else {
+                System.out.print(" " + (startingPosition + i) + " |");
+            }
+        }
+        System.out.println();
     }
 }

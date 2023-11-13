@@ -4,5 +4,6 @@ public class Main {
         Board board = new Board();
         System.out.println("Tic Tac Toe");
         System.out.println("You are: X");
+        board.drawBoardFull();
     }
 }
