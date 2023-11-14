@@ -1,6 +1,4 @@
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 
 public class Board {
     private String player1Symbol;
@@ -30,7 +28,9 @@ public class Board {
     }
 
     public void drawBoardFull() {
+        // draw top divider
         drawDiv(cols);
+        // draw game lines and dividers
         for (int i = 0; i < rows; i++) {
             drawGameLine(i);
             drawDiv(cols);
@@ -38,17 +38,22 @@ public class Board {
     }
 
     public void drawDiv(int cols) {
+        // draw first vertical line
         System.out.print('|');
         for (int i = 0; i < cols; i++ ) {
+            // draw horizontal & vertical dividers
             System.out.print("---|");
         }
         System.out.println();
     }
 
     public void drawGameLine(int row) {
+        // find the first square to retrieve data from
         int startingPosition = cols * row;
+        // first vertical divider
         System.out.print('|');
         for (int i = 0; i < cols; i++) {
+            // decide whether a square is occupied by player 1 (state = 1), 2 (state=2), or open
             if (boardState[startingPosition + i] == 1) {
                 System.out.print(' ' + player1Symbol + " |");
             } else if (boardState[startingPosition + i] == 2) {
