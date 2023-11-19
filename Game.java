@@ -15,7 +15,9 @@ public class Game {
         System.out.println("Player 1, enter the number of the square you want to mark off");
         System.out.print("> ");
         input = scanner.nextInt();
-        board.put(input, true);
+        if (!board.put(input, true)) {
+            System.out.println("Try again! Space occupied or out of bounds");
+        }
     }
 
     public int checkWinner() {
@@ -64,5 +66,13 @@ public class Game {
 
     public void stop() {
         isRunning = false;
+        scanner.close();
+    }
+
+    public static void welcome() {
+        System.out.println("Java Tic Tac Toe");
+        System.out.println("(C) 2023 Adam Aptowitz");
+        System.out.println();
     }
 }
+

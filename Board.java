@@ -73,20 +73,19 @@ public class Board {
         this.boardState = boardState;
     }
 
-    public void put(int square, boolean player) {
+    public boolean put(int square, boolean player) {
         if (!(square <= 8 && square >= 0)) {
-            System.out.println("Give me a number between 0 and " + (boardState.length - 1) + " first" );
-            return;
+            return false;
         }
         if (boardState[square] != "0") {
-            System.out.println("Unable to mark! Space is occupied");
-            return;
+            return false;
         }
         if (player) {
             this.boardState[square] = "1";
         } else {
             this.boardState[square] = "2";
         }
+        return true;
     } 
 
     public int getCols() {
