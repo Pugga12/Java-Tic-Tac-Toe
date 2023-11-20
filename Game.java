@@ -15,8 +15,10 @@ public class Game {
         System.out.println("Player 1, enter the number of the square you want to mark off");
         System.out.print("> ");
         input = scanner.nextInt();
-        if (!board.put(input, true)) {
+        while (!board.put(input, true)) {
             System.out.println("Try again! Space occupied or out of bounds");
+            System.out.print("> ");
+            input = scanner.nextInt();
         }
     }
 
@@ -55,7 +57,7 @@ public class Game {
             } else if (line.equals("222")) {
                 isRunning = false;
                 return 2;
-            }
+            } 
         }
         return 0;
     }

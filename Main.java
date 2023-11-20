@@ -1,6 +1,5 @@
 
 public class Main {
-    
     public static void main(String[] args) {
         Game.welcome();
         Board board = new Board();
@@ -11,7 +10,6 @@ public class Main {
         while (game.isRunning()) {
             board.drawBoardFull();
             game.prompt();
-            ai.doTurn();
             winner = game.checkWinner(); 
             if (winner == 1) {
                 board.drawBoardFull();
@@ -24,10 +22,23 @@ public class Main {
                 game.stop();
                 break;
             }
+            ai.doTurn();
+            winner = game.checkWinner(); 
+            if (winner == 1) {
+                board.drawBoardFull();
+                System.out.println("\nThe Player Wins!");
+                game.stop();
+                break;
+            } else if (winner == 2) {
+                board.drawBoardFull();
+                System.out.println("\nThe AI Wins!");
+                game.stop();
+                break;
+            }
             --movesLeft;
             if (movesLeft <= 0) {
                 game.stop();
-                System.out.println("Stalemate");
+                System.out.println("\nTie");
                 break;
             }
             System.out.println();
